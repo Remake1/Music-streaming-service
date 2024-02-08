@@ -8,6 +8,25 @@
 ![Screenshot](./docs/song_text.png)
 ![Screenshot](./docs/songs_comments.png)
 
+## About
+This is a music streaming app. It allows users to upload songs, create albums, and playlists. 
+Users can also comment songs and listen to them. The application is built with Vue.js and Nest.js. 
+The database  is MongoDB. Static files are stored locally on api server.
+
+## Technologies used
+### Client
+- Vue.js 3
+- Pinia
+- Tailwind CSS
+- Axios
+- I18n
+### Server
+- Nest.js
+- JWT & Passport
+- Serve-static
+- Swagger
+- Mongoose
+- MongoDB
 
 ## Set up with Docker
 ```bash
