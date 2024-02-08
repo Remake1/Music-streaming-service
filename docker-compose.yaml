@@ -13,7 +13,7 @@ services:
     ports:
       - 3000:3000
     environment:
-      - MONGO_URI=mongodb://127.0.0.1:27017/muz-dev
+      - DB_URL=mongodb://mongo:27017/muz-dev
     depends_on:
       - mongo
   mongo:
