@@ -1,11 +1,12 @@
 
 ## Screenshots
-![Screenshot](./docs/songs.png)
 ![Screenshot](./docs/songs_comments.png)
 ![Screenshot](./docs/playlist.png)
 ![Screenshot](./docs/playlist-1.png)
+![Screenshot](./docs/songs.png)
 
-## Site Setup
+
+## Web client Setup
 
 Install packages:
 ```bash
