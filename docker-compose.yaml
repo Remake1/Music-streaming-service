@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  client:
+    build: ./client
+    ports:
+      - 8080:8080
+    volumes:
+      - ./client:/node_modules
+    depends_on:
+      - server
+  server:
+    build: ./server
+    ports:
+      - 3000:3000
+    environment:
+      - MONGO_URI=mongodb://127.0.0.1:27017/muz-dev
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
