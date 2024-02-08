@@ -3,7 +3,10 @@
 ![Screenshot](./docs/songs_comments.png)
 ![Screenshot](./docs/playlist.png)
 ![Screenshot](./docs/playlist-1.png)
+![Screenshot](./docs/register.png)
 ![Screenshot](./docs/songs.png)
+![Screenshot](./docs/song_text.png)
+![Screenshot](./docs/songs_comments.png)
 
 
 ## Set up with Docker
