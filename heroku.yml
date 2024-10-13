@@ -1,0 +1,23 @@
+build:
+  docker:
+    web: ./server
+    client: ./client
+  config:
+    NODE_ENV: production
+    DB_URL: mongodb://mongo:27017/muz-dev
+
+services:
+  web:
+    command: npm start
+    ports:
+      - 3000
+  client:
+    command: npm start
+    ports:
+      - 8080
+  mongo:
+    image: mongo
+    ports:
+      - 27017
+    volumes:
+      - ./data:/data/db
