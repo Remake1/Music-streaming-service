@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center">
       <div>
         <div class="flex justify-between items-center">
-          <div><img :src="`http://localhost:3000/${picture}`" alt="song image" width="80" class="rounded-md"></div>
+          <div><img :src="axios.defaults.baseURL + picture" alt="song image" width="80" class="rounded-md"></div>
           <div>
             <router-link v-if="link" :to="{ name: 'Song', params: { id: id }}" class="text-xl ml-2">{{name}}</router-link>
             <div v-else class="text-xl ml-2">{{name}}</div>
@@ -25,6 +25,8 @@
 <script>
 import {ref} from "vue";
 import PlaylistLock from "@/components/ui/PlaylistLock.vue";
+import axios from "axios";
+
 
 export default {
   name: "Song",
@@ -76,7 +78,7 @@ export default {
 
     const duration = ref('0:00');
     let curAudio = new Audio();
-    curAudio.src = `http://localhost:3000/${props.audio}`;
+    curAudio.src = axios.defaults.baseURL+props.audio;
     curAudio.onloadedmetadata = () => {
       duration.value = String(secondsToMinutesAndSeconds(Math.floor(curAudio.duration)));
     }

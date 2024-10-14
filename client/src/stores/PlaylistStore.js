@@ -63,7 +63,7 @@ export const usePlaylistStore = defineStore( 'playlist', {
       },
     async playSong (audio) {
       this.activePlayer = true;
-      this.playerAudio = `http://localhost:3000/${audio}`;
+      this.playerAudio = axios.defaults.baseURL+audio;
       console.log("play song");
   },
       async delPlaylist () {
