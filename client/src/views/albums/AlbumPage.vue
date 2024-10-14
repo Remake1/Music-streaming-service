@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row flex-wrap">
     <div class="m-4">
-      <img alt="album picture" class="object-cover rounded-lg h-56 w-56" :src="axios.defaults.baseURL + album.picture">
+      <img alt="album picture" class="object-cover rounded-lg h-56 w-56" :src="this.$baseUrl + album.picture">
       <p class="mt-2 text-lg font-semibold">{{album.name}}</p>
       <p class="text-lg">{{album.author}}</p>
       <p style="color: #8C8C8C"><i>{{album.songs.length}}</i> {{ songTool(album.songs.length) }}</p>

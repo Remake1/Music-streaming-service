@@ -3,7 +3,7 @@
 
     <div class="song_info">
       <div class="cover">
-        <img alt="song picture" :src="axios.defaults.baseURL+song.picture">
+        <img alt="song picture" :src="this.$baseUrl+song.picture">
       </div>
       <h2>{{song.name}}</h2>
       <p class="user-name"> {{song.artist}} <br> {{ $t('create-song.song-author') }} {{userName}}</p>
@@ -37,7 +37,7 @@
 
   <Player
       v-if="activePlayer"
-    :file="axios.defaults.baseURL+song.audio"
+    :file="this.$baseUrl+song.audio"
   />
 
   <PlaylistModal

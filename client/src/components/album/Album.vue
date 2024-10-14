@@ -1,7 +1,7 @@
 <template>
   <router-link v-if="hasLink" :to="{ name: linkTo, params: { id: id }}">
     <div class="m-8 p-4 bg-song-gray rounded-lg hover:bg-song-gray-light single-card">
-      <img class="object-cover h-56 w-56" :src="axios.defaults.baseURL+picture">
+      <img class="object-cover h-56 w-56" :src="this.$baseUrl+picture">
       <div class="flex">
         <div>
           <h4 class="mt-2 font-semibold text-xl">{{ name }}</h4>
@@ -15,7 +15,7 @@
   </router-link>
   <div v-else>
     <div class="m-8 p-4 bg-song-gray rounded-lg hover:bg-song-gray-light single-card">
-      <img class="object-cover h-56 w-56" :src="axios.defaults.baseURL+picture">
+      <img class="object-cover h-56 w-56" :src="this.$baseUrl+picture">
       <div class="flex">
         <div>
           <h4 class="mt-2 font-semibold text-xl">{{ name }}</h4>

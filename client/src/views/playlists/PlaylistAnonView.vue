@@ -19,7 +19,7 @@ onBeforeMount(() => {
 <template>
   <div v-if="store.playlist.public" class="flex flex-row flex-wrap">
     <div class="m-4">
-      <img alt="album picture" class="object-cover rounded-lg h-56 w-56" :src="axios.defaults.baseURL + store.playlist.picture">
+      <img alt="album picture" class="object-cover rounded-lg h-56 w-56" :src="this.$baseUrl + store.playlist.picture">
       <p class="mt-2 text-lg font-semibold">{{store.playlist.name}}</p>
       <p class="text-lg">{{store.playlist.author}}</p>
       <p>{{store.playlist.songs.length}} {{ songTool(store.playlist.songs.length) }}</p>
