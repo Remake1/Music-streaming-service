@@ -105,7 +105,7 @@ export default {
     //player
     const playSong = async (audio) => {
       activePlayer.value = true;
-      playerAudio.value = axios.defaults.baseURL+audio;
+      playerAudio.value = `${axios.defaults.baseURL+audio}`;
       console.log("play song");
     }
     //--------
