@@ -8,7 +8,7 @@ import i18n from './i18n'
 import {createPinia} from "pinia";
 
 
-axios.defaults.baseURL = process.env.SERVER || "http://localhost:3000/";
+axios.defaults.baseURL = process.env.VUE_APP_SERVER;
 
 
 createApp(App)
