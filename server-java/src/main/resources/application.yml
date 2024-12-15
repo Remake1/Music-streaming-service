@@ -1,0 +1,32 @@
+spring:
+  data:
+    mongodb:
+      uri: ${DB_URL:mongodb://127.0.0.1:27017/muz-dev}
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  web:
+    resources:
+      static-locations: file:${STATIC_DIR:./static}/
+      add-mappings: true
+
+server:
+  port: ${PORT:3000}
+
+jwt:
+  secret: ${JWT_SECRET:changeme-use-a-long-random-secret-in-production}
+  expiration-ms: 86400000
+
+springdoc:
+  swagger-ui:
+    path: /doc
+  api-docs:
+    path: /api-docs
+
+storage:
+  upload-dir: ${STATIC_DIR:./static}
+
+logging:
+  level:
+    com.muz: INFO
