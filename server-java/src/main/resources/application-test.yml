@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/muz-test
+
+jwt:
+  secret: test-secret-at-least-32-characters-long
+  expiration-ms: 3600000
