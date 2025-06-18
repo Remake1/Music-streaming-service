@@ -1,4 +1,3 @@
-
 ## Screenshots
 ![Screenshot](./docs/songs_comments.png)
 ![Screenshot](./docs/playlist.png)
@@ -9,9 +8,9 @@
 ![Screenshot](./docs/songs_comments.png)
 
 ## About
-This is a music streaming app. It allows users to upload songs, create albums, and playlists. 
-Users can also comment songs and listen to them. The application is built with Vue.js and Nest.js. 
-The database  is MongoDB. Static files are stored locally on api server.
+This is a music streaming app. It allows users to upload songs, create albums, and playlists.
+Users can also comment on songs and listen to them. The application is built with Vue.js and Spring Boot.
+The database is MongoDB. Static files are stored locally on the API server.
 
 ## Technologies used
 ### Client
@@ -20,19 +19,18 @@ The database  is MongoDB. Static files are stored locally on api server.
 - Tailwind CSS
 - Axios
 - I18n
-### Server
-- Nest.js
-- JWT & Passport
-- Serve-static
-- Swagger
-- Mongoose
-- MongoDB
+### Backend
+- Java 17
+- Spring Boot 3
+- Spring Security + JWT
+- Spring Data MongoDB
+- Springdoc OpenAPI (Swagger UI)
+- Gradle (Kotlin DSL)
 
 ## Set up with Docker
 ```bash
 docker-compose up -d
 ```
-
 
 ## Web client Setup
 
@@ -48,59 +46,61 @@ yarn serve
 
 Navigate to `http://localhost:8080/`
 
-
 ## API Setup
 
-Setup and configure mongo DB uri at `src/app.module.ts`
+Configure MongoDB URI and JWT secret in `backend/src/main/resources/application.yml`
+or via environment variables:
 
-Install packages:
-```bash
-yarn install
+```env
+DB_URL=mongodb://127.0.0.1:27017/muz-dev
+JWT_SECRET=your-secret-here
+PORT=3000
+STATIC_DIR=./static
 ```
 
 Run:
 ```bash
-yarn start:dev
+cd backend
+./gradlew bootRun
 ```
 
-Static files stored in `dist/static/`
+Swagger UI: `http://localhost:3000/doc`
 
-Locally `http://localhost:3000/`
+Static files stored in `static/` (image/ and audio/ subdirectories)
 
 ## API Routes
 
-| ***Request type, path***   | ***Description of the request***             |
-|----------------------------|----------------------------------------------|
-| **Authorization**              |
-| POST/auth/login            | Authorization                                |
-| POST/auth/reg              | Registration                                 |
-| **Songs**                  |
-| POST/songs                 | Add a song                                   |
-| GET/songs                  | Get all songs                                |
-| GET/songs/user             | Get all songs, added by the certain user     |
-| GET/songs/search           | Search for a song                            |
-| GET/songs/number           | Number of all songs                          |
-| GET/songs/{id}             | Get song by ID                               |
-| DELETE/songs/{id}          | Delete a song                                |
-| POST/songs/comment         | Add a comment to the song                    |
-| POST/songs/listen/{id}     | Add listening to a song                                         |
-| **Albums**                     |
-| POST/album                 | Create an album                              |
-| GET/album                  | Get all albums                               |
-| GET/album/count            | Number of all albums                         |
-| GET/album/search           | Search albums                                |
-| GET/album/{id}             | Get album by ID                              |
-| DELETE/album/{id}          | Delete album                                 |
-| PUT/album/{id}/{songId}    | Add a song to an album                       |
-| **Playlists**                  |
-| POST/playlists             | Create a playlist                            |
-| GET/playlists              | Get all playlists user                       |
-| GET/playlists/{id}         | Get playlist by ID                           |
-| PATCH/playlists/{id}       | Make a playlist public                       |
-| DELETE/playlists/{id}      | Delete playlist                              |
-| GET/playlists/anon/{id}    | Get public playlist from another user, by ID |                   
-| PUT/playlists/{id}/{songId} | Add a song to playlist                       |
-
+| ***Request type, path***    | ***Description***                            |
+|-----------------------------|----------------------------------------------|
+| **Authorization**           |                                              |
+| POST /auth/login            | Login                                        |
+| POST /auth/reg              | Register                                     |
+| **Songs**                   |                                              |
+| POST /songs                 | Upload a song (multipart)                    |
+| GET /songs                  | Get all songs (pagination + filter)          |
+| GET /songs/user             | Get songs added by a user                    |
+| GET /songs/search           | Search songs by name or artist               |
+| GET /songs/number           | Total song count                             |
+| GET /songs/{id}             | Get song by ID (with comments)               |
+| DELETE /songs/{id}          | Delete a song                                |
+| POST /songs/comment         | Add a comment to a song                      |
+| POST /songs/listen/{id}     | Increment listen counter                     |
+| **Albums**                  |                                              |
+| POST /album                 | Create an album (multipart)                  |
+| GET /album                  | Get all albums (pagination)                  |
+| GET /album/count            | Total album count                            |
+| GET /album/search           | Search albums by name or author              |
+| GET /album/{id}             | Get album by ID (with songs)                 |
+| DELETE /album/{id}          | Delete album                                 |
+| PUT /album/{id}/{songId}    | Add a song to an album                       |
+| **Playlists**               |                                              |
+| POST /playlists             | Create a playlist (multipart)                |
+| GET /playlists              | Get current user's playlists                 |
+| GET /playlists/{id}         | Get playlist by ID                           |
+| PATCH /playlists/{id}       | Make playlist public                         |
+| DELETE /playlists/{id}      | Delete playlist                              |
+| GET /playlists/anon/{id}    | Get public playlist (no auth)                |
+| PUT /playlists/{id}/{songId} | Add a song to a playlist                    |
 
 ## License
 
