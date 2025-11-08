@@ -1,6 +1,3 @@
-## About
-🚧This was my first project, and there are a lot of mistakes
-
 ## Screenshots
 ![Screenshot](./docs/songs.png)
 ![Screenshot](./docs/songs_comments.png)
