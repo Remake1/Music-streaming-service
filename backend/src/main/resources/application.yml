@@ -6,10 +6,6 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
-  web:
-    resources:
-      static-locations: file:${STATIC_DIR:./static}/
-      add-mappings: true
 
 server:
   port: ${PORT:3000}
@@ -25,7 +21,12 @@ springdoc:
     path: /api-docs
 
 storage:
-  upload-dir: ${STATIC_DIR:./static}
+  s3:
+    bucket: ${S3_BUCKET:muz-media}
+    region: ${S3_REGION:us-east-1}
+    endpoint: ${S3_ENDPOINT:}
+    access-key: ${S3_ACCESS_KEY:}
+    secret-key: ${S3_SECRET_KEY:}
 
 logging:
   level:

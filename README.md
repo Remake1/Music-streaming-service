@@ -55,7 +55,13 @@ or via environment variables:
 DB_URL=mongodb://127.0.0.1:27017/muz-dev
 JWT_SECRET=your-secret-here
 PORT=3000
-STATIC_DIR=./static
+
+# S3 file storage
+S3_BUCKET=muz-media
+S3_REGION=us-east-1
+S3_ACCESS_KEY=your-access-key
+S3_SECRET_KEY=your-secret-key
+# S3_ENDPOINT=http://localhost:9000   # optional, for MinIO/LocalStack
 ```
 
 Run:
@@ -66,7 +72,7 @@ cd backend
 
 Swagger UI: `http://localhost:3000/doc`
 
-Static files stored in `static/` (image/ and audio/ subdirectories)
+Uploaded files (images and audio) are stored in S3 under `image/` and `audio/` key prefixes, and streamed back through the server at `GET /image/{name}` and `GET /audio/{name}`.
 
 ## API Routes
 
